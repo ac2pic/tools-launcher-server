@@ -1,0 +1,24 @@
+{
+  "name": "dml-server",
+  "version": "1.0.0",
+  "description": "A server for devmodloader browser support",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ac2pic/dml-server.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ac2pic/dml-server/issues"
+  },
+  "homepage": "https://github.com/ac2pic/dml-server#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  }
+}
