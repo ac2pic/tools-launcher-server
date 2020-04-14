@@ -6,14 +6,14 @@ const path = require('path');
 
 const fetch = require('node-fetch');
 
-const app = express()
+const app = express();
 
-const port = 4000
+const port = 4000;
 
-const pathToCrossCode = String.raw `C:\Program Files (x86)\Steam\steamapps\common\CrossCode`;
+const pathToCrossCode = String.raw`C:\Program Files (x86)\Steam\steamapps\common\CrossCode`;
 
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -24,7 +24,18 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-  app.use(express.static(pathToCrossCode));
+app.use(express.static(pathToCrossCode));
+
+// EXPERIMENTAL
+app.post('/api/make-dir/*', (req, res, next) => {
+    const savePath = req.path.split("/").slice(3).join('/');
+    if (savePath.length) {
+        fs.mkdir(path.join(pathToCrossCode, savePath));
+    }
+
+    res.sendStatus(200);
+});
+
 
 app.post('/api/save/*', (req, res, next) => {
     const savePath = req.path.split("/").slice(3).join('/');
@@ -36,4 +47,4 @@ app.post('/api/save/*', (req, res, next) => {
 });
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Server listening on port ${port}!`));
