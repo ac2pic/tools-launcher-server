@@ -41,3 +41,9 @@ exports.AssetsOverride = class AssetsOverride {
         this.data.sendResponse(res);
     }
 };
+
+exports.TempDirRedirect = class TempDirRedirect {
+    constructor() {
+
+    }
+}
